@@ -25,11 +25,11 @@ wifi:
 
 captive_portal:
 
-# Declaration du capteur home assistante sensor.paris_13eme_arrondissement_temperature
+# Declaration du capteur home assistante sensor.nantes_temperature
 sensor:
   - platform: homeassistant
-    id: temperature_paris
-    entity_id: sensor.paris_13eme_arrondissement_temperature
+    id: temperature_nantes
+    entity_id: sensor.nantes_temperature
 
 # define font to display words
 font:
@@ -59,4 +59,4 @@ display:
 
     # Lambda function to draw on the display using provided font
     lambda: |-    
-      it.printf(20, 50, id(myFont), "Temperature: %.1f °C", id(temperature_paris).state);
+      it.printf(20, 50, id(myFont), "Temperature: %.1f °C", id(temperature_nantes).state);
