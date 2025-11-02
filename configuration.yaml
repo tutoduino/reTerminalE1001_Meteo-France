@@ -20,125 +20,125 @@ template:
         data:
           type: hourly
         target:
-          entity_id: weather.antony
+          entity_id: weather.nantes
         response_variable: hourly
       - service: weather.get_forecasts
         data:
           type: daily
         target:
-          entity_id: weather.antony
+          entity_id: weather.nantes
         response_variable: daily
     sensor:
       - name: "Prévisions Météo"
-        unique_id: previsions_meteo_antony
-        state: "{{ hourly['weather.antony'].forecast[0] }}"
+        unique_id: previsions_meteo_nantes
+        state: "{{ hourly['weather.nantes'].forecast[0] }}"
         attributes:
-          hourly_forecast: "{{ hourly['weather.antony'].forecast }}"
-          daily_forecast: "{{ daily['weather.antony'].forecast }}"
-        availability: "{{ states('weather.antony') not in ['unknown', 'unavailable', 'none'] }}"
+          hourly_forecast: "{{ hourly['weather.nantes'].forecast }}"
+          daily_forecast: "{{ daily['weather.nantes'].forecast }}"
+        availability: "{{ states('weather.nantes') not in ['unknown', 'unavailable', 'none'] }}"
 
   - sensor:
-      - name: "Météo Heure antony"
-        unique_id: meteo_heure_antony
-        state: "{{ state_attr('sensor.previsions_meteo_antony','hourly_forecast')[0] }}"
+      - name: "Météo Heure nantes"
+        unique_id: meteo_heure_nantes
+        state: "{{ state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[0] }}"
         attributes:
           # Heure_0
-          condition0: "{{ state_attr('sensor.previsions_meteo_antony','hourly_forecast')[0].condition | default(0) }}"
-          heure0: "{{ as_timestamp(state_attr('sensor.previsions_meteo_antony','hourly_forecast')[0].datetime) | int(0) | timestamp_custom('%H:%M', true) }}"
-          temperature0: "{{ state_attr('sensor.previsions_meteo_antony','hourly_forecast')[0].temperature | float(0) }}"
-          precipitation0: "{{ state_attr('sensor.previsions_meteo_antony','hourly_forecast')[0].precipitation | float(0) }}"
+          condition0: "{{ state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[0].condition | default(0) }}"
+          heure0: "{{ as_timestamp(state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[0].datetime) | int(0) | timestamp_custom('%H:%M', true) }}"
+          temperature0: "{{ state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[0].temperature | float(0) }}"
+          precipitation0: "{{ state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[0].precipitation | float(0) }}"
           # Heure_1
-          condition1: "{{ state_attr('sensor.previsions_meteo_antony','hourly_forecast')[1].condition | default(0) }}"
-          heure1: "{{ as_timestamp(state_attr('sensor.previsions_meteo_antony','hourly_forecast')[1].datetime) | int(0) | timestamp_custom('%H:%M', true) }}"
-          temperature1: "{{ state_attr('sensor.previsions_meteo_antony','hourly_forecast')[1].temperature | float(0) }}"
-          precipitation1: "{{ state_attr('sensor.previsions_meteo_antony','hourly_forecast')[1].precipitation | float(0) }}"
+          condition1: "{{ state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[1].condition | default(0) }}"
+          heure1: "{{ as_timestamp(state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[1].datetime) | int(0) | timestamp_custom('%H:%M', true) }}"
+          temperature1: "{{ state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[1].temperature | float(0) }}"
+          precipitation1: "{{ state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[1].precipitation | float(0) }}"
           # Heure_2
-          condition2: "{{ state_attr('sensor.previsions_meteo_antony','hourly_forecast')[2].condition | default(0) }}"
-          heure2: "{{ as_timestamp(state_attr('sensor.previsions_meteo_antony','hourly_forecast')[2].datetime) | int(0) | timestamp_custom('%H:%M', true) }}"
-          temperature2: "{{ state_attr('sensor.previsions_meteo_antony','hourly_forecast')[2].temperature | float(0) }}"
-          precipitation2: "{{ state_attr('sensor.previsions_meteo_antony','hourly_forecast')[2].precipitation | float(0) }}"
+          condition2: "{{ state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[2].condition | default(0) }}"
+          heure2: "{{ as_timestamp(state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[2].datetime) | int(0) | timestamp_custom('%H:%M', true) }}"
+          temperature2: "{{ state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[2].temperature | float(0) }}"
+          precipitation2: "{{ state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[2].precipitation | float(0) }}"
           # Heure_3
-          condition3: "{{ state_attr('sensor.previsions_meteo_antony','hourly_forecast')[3].condition | default(0) }}"
-          heure3: "{{ as_timestamp(state_attr('sensor.previsions_meteo_antony','hourly_forecast')[3].datetime) | int(0) | timestamp_custom('%H:%M', true) }}"
-          temperature3: "{{ state_attr('sensor.previsions_meteo_antony','hourly_forecast')[3].temperature | float(0) }}"
-          precipitation3: "{{ state_attr('sensor.previsions_meteo_antony','hourly_forecast')[3].precipitation | float(0) }}"
+          condition3: "{{ state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[3].condition | default(0) }}"
+          heure3: "{{ as_timestamp(state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[3].datetime) | int(0) | timestamp_custom('%H:%M', true) }}"
+          temperature3: "{{ state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[3].temperature | float(0) }}"
+          precipitation3: "{{ state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[3].precipitation | float(0) }}"
           # Heure_4
-          condition4: "{{ state_attr('sensor.previsions_meteo_antony','hourly_forecast')[4].condition | default(0) }}"
-          heure4: "{{ as_timestamp(state_attr('sensor.previsions_meteo_antony','hourly_forecast')[4].datetime) | int(0) | timestamp_custom('%H:%M', true) }}"
-          temperature4: "{{ state_attr('sensor.previsions_meteo_antony','hourly_forecast')[4].temperature | float(0) }}"
-          precipitation4: "{{ state_attr('sensor.previsions_meteo_antony','hourly_forecast')[4].precipitation | float(0) }}"
+          condition4: "{{ state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[4].condition | default(0) }}"
+          heure4: "{{ as_timestamp(state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[4].datetime) | int(0) | timestamp_custom('%H:%M', true) }}"
+          temperature4: "{{ state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[4].temperature | float(0) }}"
+          precipitation4: "{{ state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[4].precipitation | float(0) }}"
           # Heure_5
-          condition5: "{{ state_attr('sensor.previsions_meteo_antony','hourly_forecast')[5].condition | default(0) }}"
-          heure5: "{{ as_timestamp(state_attr('sensor.previsions_meteo_antony','hourly_forecast')[5].datetime) | int(0) | timestamp_custom('%H:%M', true) }}"
-          temperature5: "{{ state_attr('sensor.previsions_meteo_antony','hourly_forecast')[5].temperature | float(0) }}"
-          precipitation5: "{{ state_attr('sensor.previsions_meteo_antony','hourly_forecast')[5].precipitation | float(0) }}"
+          condition5: "{{ state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[5].condition | default(0) }}"
+          heure5: "{{ as_timestamp(state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[5].datetime) | int(0) | timestamp_custom('%H:%M', true) }}"
+          temperature5: "{{ state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[5].temperature | float(0) }}"
+          precipitation5: "{{ state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[5].precipitation | float(0) }}"
           # Heure_6
-          condition6: "{{ state_attr('sensor.previsions_meteo_antony','hourly_forecast')[6].condition | default(0) }}"
-          heure6: "{{ as_timestamp(state_attr('sensor.previsions_meteo_antony','hourly_forecast')[6].datetime) | int(0) | timestamp_custom('%H:%M', true) }}"
-          temperature6: "{{ state_attr('sensor.previsions_meteo_antony','hourly_forecast')[6].temperature | float(0) }}"
-          precipitation6: "{{ state_attr('sensor.previsions_meteo_antony','hourly_forecast')[6].precipitation | float(0) }}"
+          condition6: "{{ state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[6].condition | default(0) }}"
+          heure6: "{{ as_timestamp(state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[6].datetime) | int(0) | timestamp_custom('%H:%M', true) }}"
+          temperature6: "{{ state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[6].temperature | float(0) }}"
+          precipitation6: "{{ state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[6].precipitation | float(0) }}"
           # Heure_7
-          condition7: "{{ state_attr('sensor.previsions_meteo_antony','hourly_forecast')[7].condition | default(0) }}"
-          heure7: "{{ as_timestamp(state_attr('sensor.previsions_meteo_antony','hourly_forecast')[7].datetime) | int(0) | timestamp_custom('%H:%M', true) }}"
-          temperature7: "{{ state_attr('sensor.previsions_meteo_antony','hourly_forecast')[7].temperature | float(0) }}"
-          precipitation7: "{{ state_attr('sensor.previsions_meteo_antony','hourly_forecast')[7].precipitation | float(0) }}"
+          condition7: "{{ state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[7].condition | default(0) }}"
+          heure7: "{{ as_timestamp(state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[7].datetime) | int(0) | timestamp_custom('%H:%M', true) }}"
+          temperature7: "{{ state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[7].temperature | float(0) }}"
+          precipitation7: "{{ state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[7].precipitation | float(0) }}"
           # Heure_8
-          condition8: "{{ state_attr('sensor.previsions_meteo_antony','hourly_forecast')[8].condition | default(0) }}"
-          heure8: "{{ as_timestamp(state_attr('sensor.previsions_meteo_antony','hourly_forecast')[8].datetime) | int(0) | timestamp_custom('%H:%M', true) }}"
-          temperature8: "{{ state_attr('sensor.previsions_meteo_antony','hourly_forecast')[8].temperature | float(0) }}"
-          precipitation8: "{{ state_attr('sensor.previsions_meteo_antony','hourly_forecast')[8].precipitation | float(0) }}"
+          condition8: "{{ state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[8].condition | default(0) }}"
+          heure8: "{{ as_timestamp(state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[8].datetime) | int(0) | timestamp_custom('%H:%M', true) }}"
+          temperature8: "{{ state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[8].temperature | float(0) }}"
+          precipitation8: "{{ state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[8].precipitation | float(0) }}"
           # Heure_9
-          condition9: "{{ state_attr('sensor.previsions_meteo_antony','hourly_forecast')[9].condition | default(0) }}"
-          heure9: "{{ as_timestamp(state_attr('sensor.previsions_meteo_antony','hourly_forecast')[9].datetime) | int(0) | timestamp_custom('%H:%M', true) }}"
-          temperature9: "{{ state_attr('sensor.previsions_meteo_antony','hourly_forecast')[9].temperature | float(0) }}"
-          precipitation9: "{{ state_attr('sensor.previsions_meteo_antony','hourly_forecast')[9].precipitation | float(0) }}"
+          condition9: "{{ state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[9].condition | default(0) }}"
+          heure9: "{{ as_timestamp(state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[9].datetime) | int(0) | timestamp_custom('%H:%M', true) }}"
+          temperature9: "{{ state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[9].temperature | float(0) }}"
+          precipitation9: "{{ state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[9].precipitation | float(0) }}"
           # Heure_10
-          condition10: "{{ state_attr('sensor.previsions_meteo_antony','hourly_forecast')[10].condition | default(0) }}"
-          heure10: "{{ as_timestamp(state_attr('sensor.previsions_meteo_antony','hourly_forecast')[10].datetime) | int(0) | timestamp_custom('%H:%M', true) }}"
-          temperature10: "{{ state_attr('sensor.previsions_meteo_antony','hourly_forecast')[10].temperature | float(0) }}"
-          precipitation10: "{{ state_attr('sensor.previsions_meteo_antony','hourly_forecast')[10].precipitation | float(0) }}"
+          condition10: "{{ state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[10].condition | default(0) }}"
+          heure10: "{{ as_timestamp(state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[10].datetime) | int(0) | timestamp_custom('%H:%M', true) }}"
+          temperature10: "{{ state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[10].temperature | float(0) }}"
+          precipitation10: "{{ state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[10].precipitation | float(0) }}"
           # Heure_11
-          condition11: "{{ state_attr('sensor.previsions_meteo_antony','hourly_forecast')[11].condition | default(0) }}"
-          heure11: "{{ as_timestamp(state_attr('sensor.previsions_meteo_antony','hourly_forecast')[11].datetime) | int(0) | timestamp_custom('%H:%M', true) }}"
-          temperature11: "{{ state_attr('sensor.previsions_meteo_antony','hourly_forecast')[11].temperature | float(0) }}"
-          precipitation11: "{{ state_attr('sensor.previsions_meteo_antony','hourly_forecast')[11].precipitation | float(0) }}"
+          condition11: "{{ state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[11].condition | default(0) }}"
+          heure11: "{{ as_timestamp(state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[11].datetime) | int(0) | timestamp_custom('%H:%M', true) }}"
+          temperature11: "{{ state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[11].temperature | float(0) }}"
+          precipitation11: "{{ state_attr('sensor.previsions_meteo_nantes','hourly_forecast')[11].precipitation | float(0) }}"
   - sensor:
-      - name: "Météo Jour antony"
-        unique_id: meteo_jour_antony
-        state: "{{ state_attr('sensor.previsions_meteo_antony','daily_forecast')[0] }}"
+      - name: "Météo Jour nantes"
+        unique_id: meteo_jour_nantes
+        state: "{{ state_attr('sensor.previsions_meteo_nantes','daily_forecast')[0] }}"
         attributes:
           # Jour_0
-          condition0: "{{ state_attr('sensor.previsions_meteo_antony','daily_forecast')[0].condition | default(0) }}"
+          condition0: "{{ state_attr('sensor.previsions_meteo_nantes','daily_forecast')[0].condition | default(0) }}"
           jour0: >
-            {{ ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'][as_timestamp(state_attr('sensor.previsions_meteo_antony','daily_forecast')[0].datetime) | timestamp_custom('%w', true) | int] }}
-          temperature0: "{{ state_attr('sensor.previsions_meteo_antony','daily_forecast')[0].temperature | float(0) }}"
-          templow0: "{{ state_attr('sensor.previsions_meteo_antony','daily_forecast')[0].templow | float(0) }}"
-          precipitation0: "{{ state_attr('sensor.previsions_meteo_antony','daily_forecast')[0].precipitation | float(0) }}"
+            {{ ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'][as_timestamp(state_attr('sensor.previsions_meteo_nantes','daily_forecast')[0].datetime) | timestamp_custom('%w', true) | int] }}
+          temperature0: "{{ state_attr('sensor.previsions_meteo_nantes','daily_forecast')[0].temperature | float(0) }}"
+          templow0: "{{ state_attr('sensor.previsions_meteo_nantes','daily_forecast')[0].templow | float(0) }}"
+          precipitation0: "{{ state_attr('sensor.previsions_meteo_nantes','daily_forecast')[0].precipitation | float(0) }}"
           # Jour_1
-          condition1: "{{ state_attr('sensor.previsions_meteo_antony','daily_forecast')[1].condition | default(0) }}"
+          condition1: "{{ state_attr('sensor.previsions_meteo_nantes','daily_forecast')[1].condition | default(0) }}"
           jour1: >
-            {{ ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'][as_timestamp(state_attr('sensor.previsions_meteo_antony','daily_forecast')[1].datetime) | timestamp_custom('%w', true) | int] }}
-          temperature1: "{{ state_attr('sensor.previsions_meteo_antony','daily_forecast')[1].temperature | float(0) }}"
-          templow1: "{{ state_attr('sensor.previsions_meteo_antony','daily_forecast')[1].templow | float(0) }}"
-          precipitation1: "{{ state_attr('sensor.previsions_meteo_antony','daily_forecast')[1].precipitation | float(0) }}"       
+            {{ ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'][as_timestamp(state_attr('sensor.previsions_meteo_nantes','daily_forecast')[1].datetime) | timestamp_custom('%w', true) | int] }}
+          temperature1: "{{ state_attr('sensor.previsions_meteo_nantes','daily_forecast')[1].temperature | float(0) }}"
+          templow1: "{{ state_attr('sensor.previsions_meteo_nantes','daily_forecast')[1].templow | float(0) }}"
+          precipitation1: "{{ state_attr('sensor.previsions_meteo_nantes','daily_forecast')[1].precipitation | float(0) }}"       
           # Jour_2
-          condition2: "{{ state_attr('sensor.previsions_meteo_antony','daily_forecast')[2].condition | default(0) }}"
+          condition2: "{{ state_attr('sensor.previsions_meteo_nantes','daily_forecast')[2].condition | default(0) }}"
           jour2: >
-            {{ ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'][as_timestamp(state_attr('sensor.previsions_meteo_antony','daily_forecast')[2].datetime) | timestamp_custom('%w', true) | int] }}
-          temperature2: "{{ state_attr('sensor.previsions_meteo_antony','daily_forecast')[2].temperature | float(0) }}"
-          templow2: "{{ state_attr('sensor.previsions_meteo_antony','daily_forecast')[2].templow | float(0) }}"
-          precipitation2: "{{ state_attr('sensor.previsions_meteo_antony','daily_forecast')[2].precipitation | float(0) }}"   
+            {{ ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'][as_timestamp(state_attr('sensor.previsions_meteo_nantes','daily_forecast')[2].datetime) | timestamp_custom('%w', true) | int] }}
+          temperature2: "{{ state_attr('sensor.previsions_meteo_nantes','daily_forecast')[2].temperature | float(0) }}"
+          templow2: "{{ state_attr('sensor.previsions_meteo_nantes','daily_forecast')[2].templow | float(0) }}"
+          precipitation2: "{{ state_attr('sensor.previsions_meteo_nantes','daily_forecast')[2].precipitation | float(0) }}"   
           # Jour_3
-          condition3: "{{ state_attr('sensor.previsions_meteo_antony','daily_forecast')[3].condition | default(0) }}"
+          condition3: "{{ state_attr('sensor.previsions_meteo_nantes','daily_forecast')[3].condition | default(0) }}"
           jour3: >
-            {{ ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'][as_timestamp(state_attr('sensor.previsions_meteo_antony','daily_forecast')[3].datetime) | timestamp_custom('%w', true) | int] }}
-          temperature3: "{{ state_attr('sensor.previsions_meteo_antony','daily_forecast')[3].temperature | float(0) }}"
-          templow3: "{{ state_attr('sensor.previsions_meteo_antony','daily_forecast')[3].templow | float(0) }}"
-          precipitation3: "{{ state_attr('sensor.previsions_meteo_antony','daily_forecast')[3].precipitation | float(0) }}"    
+            {{ ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'][as_timestamp(state_attr('sensor.previsions_meteo_nantes','daily_forecast')[3].datetime) | timestamp_custom('%w', true) | int] }}
+          temperature3: "{{ state_attr('sensor.previsions_meteo_nantes','daily_forecast')[3].temperature | float(0) }}"
+          templow3: "{{ state_attr('sensor.previsions_meteo_nantes','daily_forecast')[3].templow | float(0) }}"
+          precipitation3: "{{ state_attr('sensor.previsions_meteo_nantes','daily_forecast')[3].precipitation | float(0) }}"    
           # Jour_4
-          condition4: "{{ state_attr('sensor.previsions_meteo_antony','daily_forecast')[4].condition | default(0) }}"
+          condition4: "{{ state_attr('sensor.previsions_meteo_nantes','daily_forecast')[4].condition | default(0) }}"
           jour4: >
-            {{ ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'][as_timestamp(state_attr('sensor.previsions_meteo_antony','daily_forecast')[4].datetime) | timestamp_custom('%w', true) | int] }}
-          temperature4: "{{ state_attr('sensor.previsions_meteo_antony','daily_forecast')[4].temperature | float(0) }}"
-          templow4: "{{ state_attr('sensor.previsions_meteo_antony','daily_forecast')[4].templow | float(0) }}"
-          precipitation4: "{{ state_attr('sensor.previsions_meteo_antony','daily_forecast')[4].precipitation | float(0) }}"              
+            {{ ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'][as_timestamp(state_attr('sensor.previsions_meteo_nantes','daily_forecast')[4].datetime) | timestamp_custom('%w', true) | int] }}
+          temperature4: "{{ state_attr('sensor.previsions_meteo_nantes','daily_forecast')[4].temperature | float(0) }}"
+          templow4: "{{ state_attr('sensor.previsions_meteo_nantes','daily_forecast')[4].templow | float(0) }}"
+          precipitation4: "{{ state_attr('sensor.previsions_meteo_nantes','daily_forecast')[4].precipitation | float(0) }}"              
