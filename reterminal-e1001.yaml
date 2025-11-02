@@ -1,0 +1,492 @@
+esphome:
+  name: reterminal-e1001
+  friendly_name: reTerminal E1001
+
+esp32:
+  board: esp32-s3-devkitc-1
+  framework:
+    type: esp-idf
+
+# Enable logging
+logger:
+  level: DEBUG
+# Enable Home Assistant API
+api:
+  encryption:
+    key: "encryption_key"
+
+ota:
+  - platform: esphome
+    password: "password"
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Reterminal-E1001"
+    password: "password"
+
+captive_portal:
+text_sensor:
+  - platform: homeassistant
+    name: "Heure0"
+    entity_id: sensor.meteo_heure_antony
+    attribute: heure0
+    id: heure0
+
+  - platform: homeassistant
+    name: "Heure1"
+    entity_id: sensor.meteo_heure_antony
+    attribute: heure1
+    id: heure1
+
+  - platform: homeassistant
+    name: "Heure2"
+    entity_id: sensor.meteo_heure_antony
+    attribute: heure2
+    id: heure2
+
+  - platform: homeassistant
+    name: "Heure3"
+    entity_id: sensor.meteo_heure_antony
+    attribute: heure3
+    id: heure3
+
+  - platform: homeassistant
+    name: "Heure4"
+    entity_id: sensor.meteo_heure_antony
+    attribute: heure4
+    id: heure4
+
+  - platform: homeassistant
+    name: "Heure5"
+    entity_id: sensor.meteo_heure_antony
+    attribute: heure5
+    id: heure5
+
+  - platform: homeassistant
+    name: "Heure6"
+    entity_id: sensor.meteo_heure_antony
+    attribute: heure6
+    id: heure6
+
+  - platform: homeassistant
+    name: "Heure7"
+    entity_id: sensor.meteo_heure_antony
+    attribute: heure7
+    id: heure7
+
+  - platform: homeassistant
+    name: "Heure8"
+    entity_id: sensor.meteo_heure_antony
+    attribute: heure8
+    id: heure8
+
+  - platform: homeassistant
+    name: "Heure9"
+    entity_id: sensor.meteo_heure_antony
+    attribute: heure9
+    id: heure9
+
+  - platform: homeassistant
+    name: "Heure10"
+    entity_id: sensor.meteo_heure_antony
+    attribute: heure10
+    id: heure10
+
+  - platform: homeassistant
+    name: "Heure11"
+    entity_id: sensor.meteo_heure_antony
+    attribute: heure11
+    id: heure11
+
+  - platform: homeassistant
+    name: "Condition0"
+    entity_id: sensor.meteo_heure_antony
+    attribute: condition0
+    id: condition0
+
+  - platform: homeassistant
+    name: "Condition1"
+    entity_id: sensor.meteo_heure_antony
+    attribute: condition1
+    id: condition1
+
+  - platform: homeassistant
+    name: "Condition2"
+    entity_id: sensor.meteo_heure_antony
+    attribute: condition2
+    id: condition2
+
+  - platform: homeassistant
+    name: "Condition3"
+    entity_id: sensor.meteo_heure_antony
+    attribute: condition3
+    id: condition3
+
+  - platform: homeassistant
+    name: "Condition4"
+    entity_id: sensor.meteo_heure_antony
+    attribute: condition4
+    id: condition4
+
+  - platform: homeassistant
+    name: "Condition5"
+    entity_id: sensor.meteo_heure_antony
+    attribute: condition5
+    id: condition5
+
+  - platform: homeassistant
+    name: "Condition6"
+    entity_id: sensor.meteo_heure_antony
+    attribute: condition6
+    id: condition6
+
+  - platform: homeassistant
+    name: "Condition7"
+    entity_id: sensor.meteo_heure_antony
+    attribute: condition7
+    id: condition7
+
+  - platform: homeassistant
+    name: "Condition8"
+    entity_id: sensor.meteo_heure_antony
+    attribute: condition8
+    id: condition8
+
+  - platform: homeassistant
+    name: "Condition9"
+    entity_id: sensor.meteo_heure_antony
+    attribute: condition9
+    id: condition9
+
+  - platform: homeassistant
+    name: "Condition10"
+    entity_id: sensor.meteo_heure_antony
+    attribute: condition10
+    id: condition10
+
+  - platform: homeassistant
+    name: "Condition11"
+    entity_id: sensor.meteo_heure_antony
+    attribute: condition11
+    id: condition11
+
+
+sensor:
+  - platform: homeassistant
+    name: "Température0"
+    entity_id: sensor.meteo_heure_antony
+    attribute: temperature0
+    id: temperature0
+    accuracy_decimals: 1
+
+  - platform: homeassistant
+    name: "Température1"
+    entity_id: sensor.meteo_heure_antony
+    attribute: temperature1
+    id: temperature1
+    accuracy_decimals: 1
+
+  - platform: homeassistant
+    name: "Température2"
+    entity_id: sensor.meteo_heure_antony
+    attribute: temperature2
+    id: temperature2
+    accuracy_decimals: 1
+
+  - platform: homeassistant
+    name: "Température3"
+    entity_id: sensor.meteo_heure_antony
+    attribute: temperature3
+    id: temperature3
+    accuracy_decimals: 1
+
+  - platform: homeassistant
+    name: "Température4"
+    entity_id: sensor.meteo_heure_antony
+    attribute: temperature4
+    id: temperature4
+    accuracy_decimals: 1
+
+  - platform: homeassistant
+    name: "Température5"
+    entity_id: sensor.meteo_heure_antony
+    attribute: temperature5
+    id: temperature5
+    accuracy_decimals: 1
+
+  - platform: homeassistant
+    name: "Température6"
+    entity_id: sensor.meteo_heure_antony
+    attribute: temperature6
+    id: temperature6
+    accuracy_decimals: 1
+
+  - platform: homeassistant
+    name: "Température7"
+    entity_id: sensor.meteo_heure_antony
+    attribute: temperature7
+    id: temperature7
+    accuracy_decimals: 1
+
+  - platform: homeassistant
+    name: "Température8"
+    entity_id: sensor.meteo_heure_antony
+    attribute: temperature8
+    id: temperature8
+    accuracy_decimals: 1
+
+  - platform: homeassistant
+    name: "Température9"
+    entity_id: sensor.meteo_heure_antony
+    attribute: temperature9
+    id: temperature9
+    accuracy_decimals: 1
+
+  - platform: homeassistant
+    name: "Température10"
+    entity_id: sensor.meteo_heure_antony
+    attribute: temperature10
+    id: temperature10
+    accuracy_decimals: 1
+
+  - platform: homeassistant
+    name: "Température11"
+    entity_id: sensor.meteo_heure_antony
+    attribute: temperature11
+    id: temperature11
+    accuracy_decimals: 1
+
+  - platform: homeassistant
+    name: "Précipitation0"
+    entity_id: sensor.meteo_heure_antony
+    attribute: precipitation0
+    id: precipitation0
+    accuracy_decimals: 1
+
+  - platform: homeassistant
+    name: "Précipitation1"
+    entity_id: sensor.meteo_heure_antony
+    attribute: precipitation1
+    id: precipitation1
+    accuracy_decimals: 1
+
+  - platform: homeassistant
+    name: "Précipitation2"
+    entity_id: sensor.meteo_heure_antony
+    attribute: precipitation2
+    id: precipitation2
+    accuracy_decimals: 1
+
+  - platform: homeassistant
+    name: "Précipitation3"
+    entity_id: sensor.meteo_heure_antony
+    attribute: precipitation3
+    id: precipitation3
+    accuracy_decimals: 1
+
+  - platform: homeassistant
+    name: "Précipitation4"
+    entity_id: sensor.meteo_heure_antony
+    attribute: precipitation4
+    id: precipitation4
+    accuracy_decimals: 1
+
+  - platform: homeassistant
+    name: "Précipitation5"
+    entity_id: sensor.meteo_heure_antony
+    attribute: precipitation5
+    id: precipitation5
+    accuracy_decimals: 1
+
+  - platform: homeassistant
+    name: "Précipitation6"
+    entity_id: sensor.meteo_heure_antony
+    attribute: precipitation6
+    id: precipitation6
+    accuracy_decimals: 1
+
+  - platform: homeassistant
+    name: "Précipitation7"
+    entity_id: sensor.meteo_heure_antony
+    attribute: precipitation7
+    id: precipitation7
+    accuracy_decimals: 1
+
+  - platform: homeassistant
+    name: "Précipitation8"
+    entity_id: sensor.meteo_heure_antony
+    attribute: precipitation8
+    id: precipitation8
+    accuracy_decimals: 1
+
+  - platform: homeassistant
+    name: "Précipitation9"
+    entity_id: sensor.meteo_heure_antony
+    attribute: precipitation9
+    id: precipitation9
+    accuracy_decimals: 1
+
+  - platform: homeassistant
+    name: "Précipitation10"
+    entity_id: sensor.meteo_heure_antony
+    attribute: precipitation10
+    id: precipitation10
+    accuracy_decimals: 1
+
+  - platform: homeassistant
+    name: "Précipitation11"
+    entity_id: sensor.meteo_heure_antony
+    attribute: precipitation11
+    id: precipitation11
+    accuracy_decimals: 1
+
+
+font:
+  - file: "gfonts://Inter@700"
+    id: myFont
+    size: 14
+  - file: "fonts/materialdesignicons-webfont.ttf"
+    id: icon_font_50
+    size: 50
+    glyphs:
+      - "\U000F0595" # weather-partly-cloudy - Partiellement nuageux
+      - "\U000F0597" # weather-rainy - Pluie
+      - "\U000F0599" # weather-sunny - Soleil
+      - "\U000F0590" # weather-cloudy - Nuageux
+      - "\U000F0596" # weather-pouring - Pluie forte
+      - "\U000F0593" # weather-lightning - Orage
+      - "\U000F0598" # weather-snowy - Neige
+      - "\U000F0594" # weather-clear-night - Nuit claire
+      - "\U000F0F31" # weather-night-partly-cloudy - Nuit partiellement nuageuse
+spi:
+  clk_pin: GPIO7
+  mosi_pin: GPIO9
+
+display:
+  - platform: waveshare_epaper
+    id: epaper_display
+    model: 7.50inv2
+    cs_pin: GPIO10
+    dc_pin: GPIO11
+    reset_pin:
+      number: GPIO12
+      inverted: false
+    busy_pin:
+      number: GPIO13
+      inverted: true
+    update_interval: 30s
+
+    lambda: |-
+      // Vérification avant affichage
+      if (!id(precipitation0).has_state()) {
+        it.printf(0, 0, id(myFont), "Meteo en attente...");
+        return;
+      }
+
+      // Liste des heures (12 valeurs)
+      std::string heure_values[12] = {
+        id(heure0).state,
+        id(heure1).state,
+        id(heure2).state,
+        id(heure3).state,
+        id(heure4).state,
+        id(heure5).state,
+        id(heure6).state,
+        id(heure7).state,
+        id(heure8).state,
+        id(heure9).state,
+        id(heure10).state,
+        id(heure11).state
+      };
+
+      // Liste des précipitations (12 valeurs)
+      float precipitation_values[12] = {
+        id(precipitation0).state,
+        id(precipitation1).state,
+        id(precipitation2).state,
+        id(precipitation3).state,
+        id(precipitation4).state,
+        id(precipitation5).state,
+        id(precipitation6).state,
+        id(precipitation7).state,
+        id(precipitation8).state,
+        id(precipitation9).state,
+        id(precipitation10).state,
+        id(precipitation11).state
+      };
+
+      // Liste des températures (12 valeurs)
+      float temperature_values[12] = {
+        id(temperature0).state,
+        id(temperature1).state,
+        id(temperature2).state,
+        id(temperature3).state,
+        id(temperature4).state,
+        id(temperature5).state,
+        id(temperature6).state,
+        id(temperature7).state,
+        id(temperature8).state,
+        id(temperature9).state,
+        id(temperature10).state,
+        id(temperature11).state
+      };      
+      
+      // Liste des conditions (12 valeurs)
+      std::string condition_values[12] = {
+        id(condition0).state,
+        id(condition1).state,
+        id(condition2).state,
+        id(condition3).state,
+        id(condition4).state,
+        id(condition5).state,
+        id(condition6).state,
+        id(condition7).state,
+        id(condition8).state,
+        id(condition9).state,
+        id(condition10).state,
+        id(condition11).state
+      };
+
+      const char* icon;
+      int base_y = 370;
+
+      it.printf(0, base_y+50, id(myFont), "Heure");
+      it.printf(0, base_y+70, id(myFont), "Temp (°C)");
+      it.printf(0, base_y+90, id(myFont), "Precip (mm)");
+
+      for (int i = 0; i < 12; i++) {
+        if (condition_values[i] == "sunny") {
+          icon = "\U000F0599"; // soleil
+        } else if (condition_values[i] == "partlycloudy") {
+          icon = "\U000F0595"; // partiellement nuageux
+        } else if (condition_values[i] == "cloudy") {
+          icon = "\U000F0590"; // nuageux
+        } else if (condition_values[i] == "rainy") {
+          icon = "\U000F0597"; // pluie
+        } else if (condition_values[i] == "snowy") {
+          icon = "\U000F0598"; // neige
+        } else if (condition_values[i] == "pouring") {
+          icon = "\U000F0596"; // pluie forte          
+        } else if (condition_values[i] == "lightning") {
+          icon = "\U000F0593"; // orage          
+        } else if (condition_values[i] == "clear-night") {
+          icon = "\U000F0594"; // nuit claire  
+       } else if (condition_values[i] == "night-partlycloudy") {
+          icon = "\U000F0F31"; // nuit partiellement nuageuse            
+        } else {
+          icon = "\U000F0590"; // défaut nuageux
+        }
+      int base_x = 80 + 60*i;
+      int x_precip = base_x + 13;
+      int x_heure = base_x + 8;
+      int x_temp = base_x + 17;
+      it.printf(base_x, base_y, id(icon_font_50), "%s", icon);
+      it.printf(x_heure, base_y+50, id(myFont), "%s", heure_values[i].c_str());
+      it.printf(x_temp, base_y+70, id(myFont), "%.0f", temperature_values[i]);
+      it.printf(x_precip, base_y+90, id(myFont), "%.1f", precipitation_values[i]);
+
+      }   
