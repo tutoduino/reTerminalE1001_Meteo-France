@@ -23,11 +23,11 @@ logger:
 # Enable Home Assistant API
 api:
   encryption:
-    key: "key"
+    key: "Wd2LBlP8bZOyQhb6TVW04Xe3gGqXMLxPq3jfcdlp5bY="
 
 ota:
   - platform: esphome
-    password: "pwd"
+    password: "c5ead64cda5dd2db84bcaadd9c43801f"
 
 wifi:
   ssid: !secret wifi_ssid
@@ -36,7 +36,7 @@ wifi:
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
     ssid: "Reterminal-E1001"
-    password: "pwd"
+    password: "vCw4lOKV8mqy"
 
 captive_portal:
 output:
@@ -665,7 +665,7 @@ display:
       it.printf(base_x, base_y, id(icon_font_50), "\U000F18D7");
       it.printf(base_x+60, base_y, id(myFont44), "%.1f°", id(temperature).state);
       it.printf(base_x, base_y+70, id(icon_font_50), "\U000F0F55");
-      it.printf(base_x+60, base_y+70, id(myFont44), "%.1f°", id(sht4x_temperature).state);
+      it.printf(base_x+60, base_y+70, id(myFont44), "%.1f°", id(sht4x_temperature).state-1); // Calibration à -1°C 
       it.printf(base_x, base_y+140, id(icon_font_50), "\U000F058E");
       it.printf(base_x+60, base_y+140, id(myFont44), "%.0f%%", id(sht4x_humidity).state);
 
@@ -897,3 +897,6 @@ display:
       // BATTERIE
       it.printf(730, 450, id(icon_font_20), "\U000F12A3");
       it.printf(750, 452, id(myFont14), "%.1fV", id(battery_voltage).state);
+
+      
+
