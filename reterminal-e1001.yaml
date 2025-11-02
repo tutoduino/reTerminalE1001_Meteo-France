@@ -623,7 +623,7 @@ display:
     busy_pin:
       number: GPIO13
       inverted: true
-    update_interval: 30s
+    update_interval: never
 
     lambda: |-
 
