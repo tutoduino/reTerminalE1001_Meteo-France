@@ -23,11 +23,11 @@ logger:
 # Enable Home Assistant API
 api:
   encryption:
-    key: "Wd2LBlP8bZOyQhb6TVW04Xe3gGqXMLxPq3jfcdlp5bY="
+    key: "your_key"
 
 ota:
   - platform: esphome
-    password: "c5ead64cda5dd2db84bcaadd9c43801f"
+    password: "your_password"
 
 wifi:
   ssid: !secret wifi_ssid
@@ -36,7 +36,7 @@ wifi:
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
     ssid: "Reterminal-E1001"
-    password: "vCw4lOKV8mqy"
+    password: "your_password2"
 
 captive_portal:
 output:
@@ -253,8 +253,7 @@ text_sensor:
     entity_id: sensor.meteo_jour_nantes
     attribute: condition4
     id: conditionJ4           
-
-
+    
 sensor:
   # ADC for battery voltage measurement
   - platform: adc
@@ -515,7 +514,6 @@ sensor:
     id: precipitation11
     accuracy_decimals: 1
 
-
 font:
   - file: "gfonts://Inter@700"
     id: myFont14
@@ -563,7 +561,6 @@ font:
       - "\U000F0F55"  # température intérieure (home-thermometer)     
       - "\U000F058E"  # humidite (water-percent)     
       
-
   - file: "fonts/materialdesignicons-webfont.ttf"
     id: icon_font_80
     size: 80
@@ -763,7 +760,6 @@ display:
         it.printf(x_temp_max, base_y+130, id(myFont22), "%.0f°", temperature_max_jours[i]);
         it.printf(x_temp_min, base_y+160, id(myFont22), "%.0f°", temperature_min_jours[i]);        
       }
-    
 
       // ZONE PREVISIONS HORAIRES
       // Liste des heures)
