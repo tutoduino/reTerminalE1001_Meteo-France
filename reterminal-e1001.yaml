@@ -646,8 +646,7 @@ display:
       const char* mois[]  = {"janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "decembre"};
       auto t = id(mon_time).now();
       if (t.is_valid()) {
-        int index = t.day_of_week % 7;
-        snprintf(buffer, sizeof(buffer), "%s %d %s", jours[index], t.day_of_month, mois[t.month - 1]);
+        snprintf(buffer, sizeof(buffer), "%s %d %s", jours[t.day_of_week-1], t.day_of_month, mois[t.month - 1]);
         id(myFont44).measure(buffer, &text_width, &x_offset, &baseline, &height);
 
         // Calcul de la position X pour centrer le texte
