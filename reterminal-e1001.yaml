@@ -47,7 +47,8 @@ output:
 time:
   - platform: homeassistant
     id: mon_time
-
+    timezone: Europe/Paris
+    
 # define I2C interface
 i2c:
   sda: GPIO19
