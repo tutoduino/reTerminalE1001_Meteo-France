@@ -612,7 +612,10 @@ font:
     id: icon_font_20
     size: 20
     glyphs:
-      - "\U000F12A3" # battery
+      - "\U000F12A3" # battery-high
+      - "\U000F12A2" # battery-medium
+      - "\U000F12A1" # battery-low
+      - "\U000F0083" # battery-alert
       - "\U000F058C" # water
       - "\U000F050F" # thermometer
       - "\U000F1442" # clock
@@ -919,8 +922,13 @@ display:
       }   
 
       // BATTERIE
-      it.printf(730, 450, id(icon_font_20), "\U000F12A3");
+      if (id(battery_voltage).state >= 3.8) {
+        it.printf(730, 450, id(icon_font_20), "\U000F12A3"); // battery full
+      } else if (id(battery_voltage).state >= 3.6) {
+        it.printf(730, 450, id(icon_font_20), "\U000F12A2"); // battery medium
+      } else {
+        it.printf(730, 450, id(icon_font_20), "\U000F12A1"); // battery low
+      }
       it.printf(750, 452, id(myFont14), "%.1fV", id(battery_voltage).state);
 
       
-
