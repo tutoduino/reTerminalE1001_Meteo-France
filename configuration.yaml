@@ -141,4 +141,10 @@ template:
             {{ ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'][as_timestamp(state_attr('sensor.previsions_meteo_nantes','daily_forecast')[4].datetime) | timestamp_custom('%w', true) | int] }}
           temperature4: "{{ state_attr('sensor.previsions_meteo_nantes','daily_forecast')[4].temperature | float(0) }}"
           templow4: "{{ state_attr('sensor.previsions_meteo_nantes','daily_forecast')[4].templow | float(0) }}"
-          precipitation4: "{{ state_attr('sensor.previsions_meteo_nantes','daily_forecast')[4].precipitation | float(0) }}"              
+          precipitation4: "{{ state_attr('sensor.previsions_meteo_nantes','daily_forecast')[4].precipitation | float(0) }}"    
+  - sensor:
+      - name: "Outdoor temperature"
+        unique_id: outdoor_temperature
+        state: "{{ state_attr('weather.forecast_home','temperature') }}"  
+          
+  
