@@ -60,197 +60,197 @@ text_sensor:
   # Prevision horaire
   - platform: homeassistant
     name: "Heure0"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: heure0
     id: heure0
 
   - platform: homeassistant
     name: "Heure1"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: heure1
     id: heure1
 
   - platform: homeassistant
     name: "Heure2"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: heure2
     id: heure2
 
   - platform: homeassistant
     name: "Heure3"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: heure3
     id: heure3
 
   - platform: homeassistant
     name: "Heure4"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: heure4
     id: heure4
 
   - platform: homeassistant
     name: "Heure5"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: heure5
     id: heure5
 
   - platform: homeassistant
     name: "Heure6"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: heure6
     id: heure6
 
   - platform: homeassistant
     name: "Heure7"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: heure7
     id: heure7
 
   - platform: homeassistant
     name: "Heure8"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: heure8
     id: heure8
 
   - platform: homeassistant
     name: "Heure9"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: heure9
     id: heure9
 
   - platform: homeassistant
     name: "Heure10"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: heure10
     id: heure10
 
   - platform: homeassistant
     name: "Heure11"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: heure11
     id: heure11
 
   - platform: homeassistant
     name: "Condition0"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: condition0
     id: condition0
 
   - platform: homeassistant
     name: "Condition1"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: condition1
     id: condition1
 
   - platform: homeassistant
     name: "Condition2"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: condition2
     id: condition2
 
   - platform: homeassistant
     name: "Condition3"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: condition3
     id: condition3
 
   - platform: homeassistant
     name: "Condition4"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: condition4
     id: condition4
 
   - platform: homeassistant
     name: "Condition5"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: condition5
     id: condition5
 
   - platform: homeassistant
     name: "Condition6"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: condition6
     id: condition6
 
   - platform: homeassistant
     name: "Condition7"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: condition7
     id: condition7
 
   - platform: homeassistant
     name: "Condition8"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: condition8
     id: condition8
 
   - platform: homeassistant
     name: "Condition9"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: condition9
     id: condition9
 
   - platform: homeassistant
     name: "Condition10"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: condition10
     id: condition10
 
   - platform: homeassistant
     name: "Condition11"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: condition11
     id: condition11
 
   # Prevision quotidienne
   - platform: homeassistant
     name: "Jour0"
-    entity_id: sensor.meteo_jour_antony
+    entity_id: sensor.meteo_jour_nantes
     attribute: jour0
     id: jour0
   - platform: homeassistant
     name: "Jour1"
-    entity_id: sensor.meteo_jour_antony
+    entity_id: sensor.meteo_jour_nantes
     attribute: jour1
     id: jour1
   - platform: homeassistant
     name: "Jour2"
-    entity_id: sensor.meteo_jour_antony
+    entity_id: sensor.meteo_jour_nantes
     attribute: jour2
     id: jour2
   - platform: homeassistant
     name: "Jour3"
-    entity_id: sensor.meteo_jour_antony
+    entity_id: sensor.meteo_jour_nantes
     attribute: jour3
     id: jour3
   - platform: homeassistant
     name: "Jour4"
-    entity_id: sensor.meteo_jour_antony
+    entity_id: sensor.meteo_jour_nantes
     attribute: jour4
     id: jour4         
   - platform: homeassistant
     name: "ConditionJ0"
-    entity_id: sensor.meteo_jour_antony
+    entity_id: sensor.meteo_jour_nantes
     attribute: condition0
     id: conditionJ0
   - platform: homeassistant
     name: "ConditionJ1"
-    entity_id: sensor.meteo_jour_antony
+    entity_id: sensor.meteo_jour_nantes
     attribute: condition1
     id: conditionJ1
   - platform: homeassistant
     name: "ConditionJ2"
-    entity_id: sensor.meteo_jour_antony
+    entity_id: sensor.meteo_jour_nantes
     attribute: condition2
     id: conditionJ2
   - platform: homeassistant
     name: "ConditionJ3"
-    entity_id: sensor.meteo_jour_antony
+    entity_id: sensor.meteo_jour_nantes
     attribute: condition3
     id: conditionJ3
   - platform: homeassistant
     name: "ConditionJ4"
-    entity_id: sensor.meteo_jour_antony
+    entity_id: sensor.meteo_jour_nantes
     attribute: condition4
     id: conditionJ4           
 
@@ -295,13 +295,13 @@ sensor:
 
   - platform: homeassistant
     name: "Temperature"
-    entity_id: sensor.antony_temperature
+    entity_id: sensor.nantes_temperature
     id: temperature
       
   # Previsions quotidiennes      
   - platform: homeassistant
     name: "TemperatureJ0"
-    entity_id: sensor.meteo_jour_antony
+    entity_id: sensor.meteo_jour_nantes
     attribute: temperature0
     id: temperatureJ0
     accuracy_decimals: 1
@@ -311,250 +311,250 @@ sensor:
         - component.update: epaper_display      
   - platform: homeassistant
     name: "TemperatureJ1"
-    entity_id: sensor.meteo_jour_antony
+    entity_id: sensor.meteo_jour_nantes
     attribute: temperature1
     id: temperatureJ1
     accuracy_decimals: 1
   - platform: homeassistant
     name: "TemperatureJ2"
-    entity_id: sensor.meteo_jour_antony
+    entity_id: sensor.meteo_jour_nantes
     attribute: temperature2
     id: temperatureJ2
     accuracy_decimals: 1
   - platform: homeassistant
     name: "TemperatureJ3"
-    entity_id: sensor.meteo_jour_antony
+    entity_id: sensor.meteo_jour_nantes
     attribute: temperature3
     id: temperatureJ3
     accuracy_decimals: 1
   - platform: homeassistant
     name: "TemperatureJ4"
-    entity_id: sensor.meteo_jour_antony
+    entity_id: sensor.meteo_jour_nantes
     attribute: temperature4
     id: temperatureJ4
     accuracy_decimals: 1            
   - platform: homeassistant
     name: "TemplowJ0"
-    entity_id: sensor.meteo_jour_antony
+    entity_id: sensor.meteo_jour_nantes
     attribute: templow0
     id: templowJ0
     accuracy_decimals: 1
   - platform: homeassistant
     name: "TemplowJ1"
-    entity_id: sensor.meteo_jour_antony
+    entity_id: sensor.meteo_jour_nantes
     attribute: templow1
     id: templowJ1
     accuracy_decimals: 1
   - platform: homeassistant
     name: "TemplowJ2"
-    entity_id: sensor.meteo_jour_antony
+    entity_id: sensor.meteo_jour_nantes
     attribute: templow2
     id: templowJ2
     accuracy_decimals: 1
   - platform: homeassistant
     name: "TemplowJ3"
-    entity_id: sensor.meteo_jour_antony
+    entity_id: sensor.meteo_jour_nantes
     attribute: templow3
     id: templowJ3
     accuracy_decimals: 1
   - platform: homeassistant
     name: "TemplowJ4"
-    entity_id: sensor.meteo_jour_antony
+    entity_id: sensor.meteo_jour_nantes
     attribute: templow4
     id: templowJ4
     accuracy_decimals: 1            
 
   - platform: homeassistant
     name: "PrecipitationJ0"
-    entity_id: sensor.meteo_jour_antony
+    entity_id: sensor.meteo_jour_nantes
     attribute: precipitation0
     id: precipitationJ0
   - platform: homeassistant
     name: "PrecipitationJ1"
-    entity_id: sensor.meteo_jour_antony
+    entity_id: sensor.meteo_jour_nantes
     attribute: precipitation1
     id: precipitationJ1
   - platform: homeassistant
     name: "PrecipitationJ2"
-    entity_id: sensor.meteo_jour_antony
+    entity_id: sensor.meteo_jour_nantes
     attribute: precipitation2
     id: precipitationJ2
   - platform: homeassistant
     name: "PrecipitationJ3"
-    entity_id: sensor.meteo_jour_antony
+    entity_id: sensor.meteo_jour_nantes
     attribute: precipitation3
     id: precipitationJ3
   - platform: homeassistant
     name: "PrecipitationJ4"
-    entity_id: sensor.meteo_jour_antony
+    entity_id: sensor.meteo_jour_nantes
     attribute: precipitation4
     id: precipitationJ4
 
   # Previsions horaires      
   - platform: homeassistant
     name: "Temperature0"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: temperature0
     id: temperature0
     accuracy_decimals: 1
 
   - platform: homeassistant
     name: "Temperature1"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: temperature1
     id: temperature1
     accuracy_decimals: 1
 
   - platform: homeassistant
     name: "Temperature2"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: temperature2
     id: temperature2
     accuracy_decimals: 1
 
   - platform: homeassistant
     name: "Temperature3"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: temperature3
     id: temperature3
     accuracy_decimals: 1
 
   - platform: homeassistant
     name: "Temperature4"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: temperature4
     id: temperature4
     accuracy_decimals: 1
 
   - platform: homeassistant
     name: "Temperature5"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: temperature5
     id: temperature5
     accuracy_decimals: 1
 
   - platform: homeassistant
     name: "Temperature6"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: temperature6
     id: temperature6
     accuracy_decimals: 1
 
   - platform: homeassistant
     name: "Temperature7"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: temperature7
     id: temperature7
     accuracy_decimals: 1
 
   - platform: homeassistant
     name: "Temperature8"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: temperature8
     id: temperature8
     accuracy_decimals: 1
 
   - platform: homeassistant
     name: "Temperature9"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: temperature9
     id: temperature9
     accuracy_decimals: 1
 
   - platform: homeassistant
     name: "Temperature10"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: temperature10
     id: temperature10
     accuracy_decimals: 1
 
   - platform: homeassistant
     name: "Temperature11"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: temperature11
     id: temperature11
     accuracy_decimals: 1
 
   - platform: homeassistant
     name: "Precipitation0"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: precipitation0
     id: precipitation0
     accuracy_decimals: 1
 
   - platform: homeassistant
     name: "Precipitation1"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: precipitation1
     id: precipitation1
     accuracy_decimals: 1
 
   - platform: homeassistant
     name: "Precipitation2"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: precipitation2
     id: precipitation2
     accuracy_decimals: 1
 
   - platform: homeassistant
     name: "Precipitation3"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: precipitation3
     id: precipitation3
     accuracy_decimals: 1
 
   - platform: homeassistant
     name: "Precipitation4"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: precipitation4
     id: precipitation4
     accuracy_decimals: 1
 
   - platform: homeassistant
     name: "Precipitation5"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: precipitation5
     id: precipitation5
     accuracy_decimals: 1
 
   - platform: homeassistant
     name: "Precipitation6"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: precipitation6
     id: precipitation6
     accuracy_decimals: 1
 
   - platform: homeassistant
     name: "Precipitation7"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: precipitation7
     id: precipitation7
     accuracy_decimals: 1
 
   - platform: homeassistant
     name: "Precipitation8"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: precipitation8
     id: precipitation8
     accuracy_decimals: 1
 
   - platform: homeassistant
     name: "Precipitation9"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: precipitation9
     id: precipitation9
     accuracy_decimals: 1
 
   - platform: homeassistant
     name: "Precipitation10"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: precipitation10
     id: precipitation10
     accuracy_decimals: 1
 
   - platform: homeassistant
     name: "Precipitation11"
-    entity_id: sensor.meteo_heure_antony
+    entity_id: sensor.meteo_heure_nantes
     attribute: precipitation11
     id: precipitation11
     accuracy_decimals: 1
