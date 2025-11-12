@@ -203,7 +203,6 @@ text_sensor:
     id: condition11
 
   # Prevision quotidienne
-  # Prevision horaire
   - platform: homeassistant
     name: "Jour0"
     entity_id: sensor.meteo_jour_antony
@@ -299,6 +298,7 @@ sensor:
     entity_id: sensor.antony_temperature
     id: temperature
       
+  # Previsions quotidiennes      
   - platform: homeassistant
     name: "TemperatureJ0"
     entity_id: sensor.meteo_jour_antony
@@ -363,6 +363,34 @@ sensor:
     attribute: templow4
     id: templowJ4
     accuracy_decimals: 1            
+
+  - platform: homeassistant
+    name: "PrecipitationJ0"
+    entity_id: sensor.meteo_jour_antony
+    attribute: precipitation0
+    id: precipitationJ0
+  - platform: homeassistant
+    name: "PrecipitationJ1"
+    entity_id: sensor.meteo_jour_antony
+    attribute: precipitation1
+    id: precipitationJ1
+  - platform: homeassistant
+    name: "PrecipitationJ2"
+    entity_id: sensor.meteo_jour_antony
+    attribute: precipitation2
+    id: precipitationJ2
+  - platform: homeassistant
+    name: "PrecipitationJ3"
+    entity_id: sensor.meteo_jour_antony
+    attribute: precipitation3
+    id: precipitationJ3
+  - platform: homeassistant
+    name: "PrecipitationJ4"
+    entity_id: sensor.meteo_jour_antony
+    attribute: precipitation4
+    id: precipitationJ4
+
+  # Previsions horaires      
   - platform: homeassistant
     name: "Temperature0"
     entity_id: sensor.meteo_heure_antony
@@ -621,12 +649,12 @@ font:
       - "\U000F1442" # clock
       
 # Deep sleep configuration to save power
-deep_sleep:
-  id: deep_sleep_1              # ID for deep sleep component
-  run_duration: 30s             # Time to stay awake after wake-up
-  sleep_duration: 30min         # Time to sleep between wake-ups
-  wakeup_pin: GPIO3             # GPIO pin to wake up device
-  wakeup_pin_mode: INVERT_WAKEUP # Inverted wake-up logic
+#deep_sleep:
+#  id: deep_sleep_1              # ID for deep sleep component
+#  run_duration: 300s             # Time to stay awake after wake-up (30 secondes)
+#  sleep_duration: 30min         # Time to sleep between wake-ups (30 minutes)
+#  wakeup_pin: GPIO3             # GPIO pin to wake up device
+#  wakeup_pin_mode: INVERT_WAKEUP # Inverted wake-up logic
 
 spi:
   clk_pin: GPIO7
@@ -644,7 +672,8 @@ display:
     busy_pin:
       number: GPIO13
       inverted: true
-    update_interval: never
+#    update_interval: never
+    update_interval: 60s
 
     lambda: |-
 
@@ -699,6 +728,13 @@ display:
 
       // ZONE PREVISIONS QUOTIDIENNES
       // ----------------------------
+
+      // Icones pour les temperatures et precipitation journalieres
+      base_x = 210;
+      base_y = 90;      
+      it.printf(base_x, base_y+135, id(icon_font_20), "\U000F050F");  // temperature
+      it.printf(base_x, base_y+165, id(icon_font_20), "\U000F058C");  // precipitation
+
       // Liste des jours
       std::string jour_jours[5] = {
         id(jour0).state,
@@ -734,6 +770,16 @@ display:
         id(conditionJ4).state
       };
 
+      // Liste des precipitations
+      float precipitation_jours[5] = {
+        id(precipitationJ0).state,
+        id(precipitationJ1).state,
+        id(precipitationJ2).state,
+        id(precipitationJ3).state,
+        id(precipitationJ4).state
+      };      
+
+      // Boucle sur les 5 jours
       for (int i = 0; i < 5; i++) {
         if (condition_jours[i] == "sunny") {
           icon = "\U000F0599"; // soleil
@@ -772,23 +818,26 @@ display:
         }
 
 
-        // Calcul de la position X pour centrer le texte
         base_x = 220 + 116*i;
-        base_y = 90;
+
+        // jour
         id(myFont22).measure(jour_jours[i].c_str(), &text_width, &x_offset, &baseline, &height);
         int x_jour = base_x + (116 - text_width) / 2; 
+        it.printf(x_jour, base_y, id(myFont22), "%s", jour_jours[i].c_str());
+        // icon
         id(icon_font_80).measure(icon, &text_width, &x_offset, &baseline, &height);
         int x_icon = base_x + (116 - text_width) / 2; 
-        snprintf(buffer, sizeof(buffer), "%.0f", temperature_max_jours[i]);
-        id(myFont22).measure(buffer, &text_width, &x_offset, &baseline, &height);
-        int x_temp_max = base_x + (116 - text_width) / 2; 
-        snprintf(buffer, sizeof(buffer), "%.0f", temperature_min_jours[i]);
-        id(myFont22).measure(buffer, &text_width, &x_offset, &baseline, &height);
-        int x_temp_min = base_x + (116 - text_width) / 2; 
-        it.printf(x_jour, base_y, id(myFont22), "%s", jour_jours[i].c_str());
         it.printf(x_icon, base_y+40, id(icon_font_80), "%s", icon);
-        it.printf(x_temp_max, base_y+130, id(myFont22), "%.0f°", temperature_max_jours[i]);
-        it.printf(x_temp_min, base_y+160, id(myFont22), "%.0f°", temperature_min_jours[i]);        
+        // temperature min/max
+        snprintf(buffer, sizeof(buffer), "%.0f° / %.0f°", temperature_min_jours[i], temperature_max_jours[i]);
+        id(myFont22).measure(buffer, &text_width, &x_offset, &baseline, &height);
+        int x_temp_min_max = base_x + (116 - text_width) / 2; 
+        it.printf(x_temp_min_max, base_y+130, id(myFont22), "%s", buffer);
+        // precipitation
+        snprintf(buffer, sizeof(buffer), "%.1f", precipitation_jours[i]);
+        id(myFont22).measure(buffer, &text_width, &x_offset, &baseline, &height);
+        int x_precipitation = base_x + (116 - text_width) / 2; 
+        it.printf(x_precipitation, base_y+160, id(myFont22), "%s", buffer);        
       }
     
 
@@ -910,15 +959,15 @@ display:
       int x_heure = base_x + (60 - text_width) / 2; 
       it.printf(x_heure, base_y+60, id(myFont16), "%s", heure_values[i].c_str());
       // temperature
-      snprintf(buffer, sizeof(buffer), "%.0f", temperature_values[i]);
+      snprintf(buffer, sizeof(buffer), "%.0f°", temperature_values[i]);
       id(myFont16).measure(buffer, &text_width, &x_offset, &baseline, &height);
       int x_temp = base_x + (60 - text_width) / 2; 
-      it.printf(x_temp, base_y+85, id(myFont16), "%.0f°", temperature_values[i]);
+      it.printf(x_temp, base_y+85, id(myFont16), "%s", buffer);
       // precipication
       snprintf(buffer, sizeof(buffer), "%.1f", precipitation_values[i]);
       id(myFont16).measure(buffer, &text_width, &x_offset, &baseline, &height);
       int x_precip = base_x + (60 - text_width) / 2; 
-      it.printf(x_precip, base_y+110, id(myFont16), "%.1f", precipitation_values[i]);
+      it.printf(x_precip, base_y+110, id(myFont16), "%s", buffer);
       }   
 
       // BATTERIE
@@ -930,5 +979,3 @@ display:
         it.printf(730, 450, id(icon_font_20), "\U000F12A1"); // battery low
       }
       it.printf(750, 452, id(myFont14), "%.1fV", id(battery_voltage).state);
-
-      
