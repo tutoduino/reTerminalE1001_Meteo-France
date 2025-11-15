@@ -27,7 +27,7 @@ api:
 
 ota:
   - platform: esphome
-    password: "your_password"
+    password: "your_pwd"
 
 wifi:
   ssid: !secret wifi_ssid
@@ -36,7 +36,7 @@ wifi:
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
     ssid: "Reterminal-E1001"
-    password: "your_password2"
+    password: "pwd"
 
 captive_portal:
 output:
@@ -48,7 +48,7 @@ time:
   - platform: homeassistant
     id: mon_time
     timezone: Europe/Paris
-    
+
 # define I2C interface
 i2c:
   sda: GPIO19
@@ -203,7 +203,6 @@ text_sensor:
     id: condition11
 
   # Prevision quotidienne
-  # Prevision horaire
   - platform: homeassistant
     name: "Jour0"
     entity_id: sensor.meteo_jour_nantes
@@ -256,6 +255,26 @@ text_sensor:
     id: conditionJ4           
     
 sensor:
+  - platform: homeassistant
+    name: "Temperature Serre"
+    entity_id: sensor.lumi_lumi_weather_temperature_2
+    id: temperature_serre
+
+  - platform: homeassistant
+    name: "Temperature Interieure"
+    entity_id: sensor.lumi_lumi_weather_temperature
+    id: temperature_interieure
+
+  - platform: homeassistant
+    name: "Temperature Maximale Serre 48h"
+    entity_id: sensor.temperature_maximale_serre_48h
+    id: temperature_max_serre      
+
+  - platform: homeassistant
+    name: "Temperature Minimale Serre 48h"
+    entity_id: sensor.temperature_minimale_serre_48h
+    id: temperature_min_serre   
+
   # ADC for battery voltage measurement
   - platform: adc
     pin: GPIO1
@@ -283,6 +302,7 @@ sensor:
     entity_id: sensor.nantes_temperature
     id: temperature
       
+  # Previsions quotidiennes      
   - platform: homeassistant
     name: "TemperatureJ0"
     entity_id: sensor.meteo_jour_nantes
@@ -347,6 +367,34 @@ sensor:
     attribute: templow4
     id: templowJ4
     accuracy_decimals: 1            
+
+  - platform: homeassistant
+    name: "PrecipitationJ0"
+    entity_id: sensor.meteo_jour_nantes
+    attribute: precipitation0
+    id: precipitationJ0
+  - platform: homeassistant
+    name: "PrecipitationJ1"
+    entity_id: sensor.meteo_jour_nantes
+    attribute: precipitation1
+    id: precipitationJ1
+  - platform: homeassistant
+    name: "PrecipitationJ2"
+    entity_id: sensor.meteo_jour_nantes
+    attribute: precipitation2
+    id: precipitationJ2
+  - platform: homeassistant
+    name: "PrecipitationJ3"
+    entity_id: sensor.meteo_jour_nantes
+    attribute: precipitation3
+    id: precipitationJ3
+  - platform: homeassistant
+    name: "PrecipitationJ4"
+    entity_id: sensor.meteo_jour_nantes
+    attribute: precipitation4
+    id: precipitationJ4
+
+  # Previsions horaires      
   - platform: homeassistant
     name: "Temperature0"
     entity_id: sensor.meteo_heure_nantes
@@ -515,6 +563,7 @@ sensor:
     id: precipitation11
     accuracy_decimals: 1
 
+
 font:
   - file: "gfonts://Inter@700"
     id: myFont14
@@ -560,8 +609,11 @@ font:
       - "\U000F0F2F" # weather-exceptional - Exceptionnel    
       - "\U000F18D7"  # température extérieure (sun-thermometer)
       - "\U000F0F55"  # température intérieure (home-thermometer)     
-      - "\U000F058E"  # humidite (water-percent)     
+      - "\U000F058E"  # humidite (water-percent)   
+      - "\U000F002D"  # humidite (greenhous)   
+        
       
+
   - file: "fonts/materialdesignicons-webfont.ttf"
     id: icon_font_80
     size: 80
@@ -598,13 +650,13 @@ font:
       - "\U000F0083" # battery-alert
       - "\U000F058C" # water
       - "\U000F050F" # thermometer
-      - "\U000F1442" # clock      
+      - "\U000F1442" # clock
       
 # Deep sleep configuration to save power
 deep_sleep:
   id: deep_sleep_1              # ID for deep sleep component
-  run_duration: 30s             # Time to stay awake after wake-up
-  sleep_duration: 30min         # Time to sleep between wake-ups
+  run_duration: 300s             # Time to stay awake after wake-up (30 secondes)
+  sleep_duration: 30min         # Time to sleep between wake-ups (30 minutes)
   wakeup_pin: GPIO3             # GPIO pin to wake up device
   wakeup_pin_mode: INVERT_WAKEUP # Inverted wake-up logic
 
@@ -625,6 +677,7 @@ display:
       number: GPIO13
       inverted: true
     update_interval: never
+#    update_interval: 60s
 
     lambda: |-
 
@@ -660,18 +713,33 @@ display:
       // TEMPERATURES INTERIEURE EXTERIEURE
       // ----------------------------------
       base_x = 10;
-      base_y = 90;
+      base_y = 85;
 
+      // Temperature exterieure
       it.printf(base_x, base_y, id(icon_font_50), "\U000F18D7");
       it.printf(base_x+60, base_y, id(myFont44), "%.1f°", id(temperature).state);
-      it.printf(base_x, base_y+70, id(icon_font_50), "\U000F0F55");
-      it.printf(base_x+60, base_y+70, id(myFont44), "%.1f°", id(sht4x_temperature).state-0.3); // Calibration de -0.3°C 
-      it.printf(base_x, base_y+140, id(icon_font_50), "\U000F058E");
-      it.printf(base_x+60, base_y+140, id(myFont44), "%.0f%%", id(sht4x_humidity).state);
+      // Temperature interieure
+      it.printf(base_x, base_y+55, id(icon_font_50), "\U000F0F55");
+      //it.printf(base_x+60, base_y+55, id(myFont44), "%.1f°", id(sht4x_temperature).state);
+      it.printf(base_x+60, base_y+55, id(myFont44), "%.1f°", id(temperature_interieure).state);
+      // Humidity interieure
+      //it.printf(base_x, base_y+110, id(icon_font_50), "\U000F058E");
+      //it.printf(base_x+60, base_y+110, id(myFont44), "%.1f%%", id(sht4x_humidity).state);
+      // Temperature serre
+      it.printf(base_x, base_y+110, id(icon_font_50), "\U000F002D");
+      it.printf(base_x+60, base_y+110, id(myFont44), "%.1f°", id(temperature_serre).state);
+      it.printf(base_x+30, base_y+165, id(myFont22), "%.1f° / %.1f°", id(temperature_min_serre).state, id(temperature_max_serre).state);
 
 
       // ZONE PREVISIONS QUOTIDIENNES
       // ----------------------------
+
+      // Icones pour les temperatures et precipitation journalieres
+      base_x = 210;
+      base_y = 90;      
+      it.printf(base_x, base_y+135, id(icon_font_20), "\U000F050F");  // temperature
+      it.printf(base_x, base_y+165, id(icon_font_20), "\U000F058C");  // precipitation
+
       // Liste des jours
       std::string jour_jours[5] = {
         id(jour0).state,
@@ -707,6 +775,16 @@ display:
         id(conditionJ4).state
       };
 
+      // Liste des precipitations
+      float precipitation_jours[5] = {
+        id(precipitationJ0).state,
+        id(precipitationJ1).state,
+        id(precipitationJ2).state,
+        id(precipitationJ3).state,
+        id(precipitationJ4).state
+      };      
+
+      // Boucle sur les 5 jours
       for (int i = 0; i < 5; i++) {
         if (condition_jours[i] == "sunny") {
           icon = "\U000F0599"; // soleil
@@ -745,24 +823,28 @@ display:
         }
 
 
-        // Calcul de la position X pour centrer le texte
         base_x = 220 + 116*i;
-        base_y = 90;
+
+        // jour
         id(myFont22).measure(jour_jours[i].c_str(), &text_width, &x_offset, &baseline, &height);
         int x_jour = base_x + (116 - text_width) / 2; 
+        it.printf(x_jour, base_y, id(myFont22), "%s", jour_jours[i].c_str());
+        // icon
         id(icon_font_80).measure(icon, &text_width, &x_offset, &baseline, &height);
         int x_icon = base_x + (116 - text_width) / 2; 
-        snprintf(buffer, sizeof(buffer), "%.0f", temperature_max_jours[i]);
-        id(myFont22).measure(buffer, &text_width, &x_offset, &baseline, &height);
-        int x_temp_max = base_x + (116 - text_width) / 2; 
-        snprintf(buffer, sizeof(buffer), "%.0f", temperature_min_jours[i]);
-        id(myFont22).measure(buffer, &text_width, &x_offset, &baseline, &height);
-        int x_temp_min = base_x + (116 - text_width) / 2; 
-        it.printf(x_jour, base_y, id(myFont22), "%s", jour_jours[i].c_str());
         it.printf(x_icon, base_y+40, id(icon_font_80), "%s", icon);
-        it.printf(x_temp_max, base_y+130, id(myFont22), "%.0f°", temperature_max_jours[i]);
-        it.printf(x_temp_min, base_y+160, id(myFont22), "%.0f°", temperature_min_jours[i]);        
+        // temperature min/max
+        snprintf(buffer, sizeof(buffer), "%.0f° / %.0f°", temperature_min_jours[i], temperature_max_jours[i]);
+        id(myFont22).measure(buffer, &text_width, &x_offset, &baseline, &height);
+        int x_temp_min_max = base_x + (116 - text_width) / 2; 
+        it.printf(x_temp_min_max, base_y+130, id(myFont22), "%s", buffer);
+        // precipitation
+        snprintf(buffer, sizeof(buffer), "%.1f", precipitation_jours[i]);
+        id(myFont22).measure(buffer, &text_width, &x_offset, &baseline, &height);
+        int x_precipitation = base_x + (116 - text_width) / 2; 
+        it.printf(x_precipitation, base_y+160, id(myFont22), "%s", buffer);        
       }
+    
 
       // ZONE PREVISIONS HORAIRES
       // Liste des heures)
@@ -882,15 +964,15 @@ display:
       int x_heure = base_x + (60 - text_width) / 2; 
       it.printf(x_heure, base_y+60, id(myFont16), "%s", heure_values[i].c_str());
       // temperature
-      snprintf(buffer, sizeof(buffer), "%.0f", temperature_values[i]);
+      snprintf(buffer, sizeof(buffer), "%.0f°", temperature_values[i]);
       id(myFont16).measure(buffer, &text_width, &x_offset, &baseline, &height);
       int x_temp = base_x + (60 - text_width) / 2; 
-      it.printf(x_temp, base_y+85, id(myFont16), "%.0f°", temperature_values[i]);
+      it.printf(x_temp, base_y+85, id(myFont16), "%s", buffer);
       // precipication
       snprintf(buffer, sizeof(buffer), "%.1f", precipitation_values[i]);
       id(myFont16).measure(buffer, &text_width, &x_offset, &baseline, &height);
       int x_precip = base_x + (60 - text_width) / 2; 
-      it.printf(x_precip, base_y+110, id(myFont16), "%.1f", precipitation_values[i]);
+      it.printf(x_precip, base_y+110, id(myFont16), "%s", buffer);
       }   
 
       // BATTERIE
@@ -904,5 +986,6 @@ display:
       it.printf(750, 452, id(myFont14), "%.1fV", id(battery_voltage).state);
 
       
-      
+
+
 
