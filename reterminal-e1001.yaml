@@ -36,7 +36,7 @@ wifi:
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
     ssid: "Reterminal-E1001"
-    password: "pwd"
+    password: "ssidbispwd"
 
 captive_portal:
 output:
@@ -253,7 +253,8 @@ text_sensor:
     entity_id: sensor.meteo_jour_nantes
     attribute: condition4
     id: conditionJ4           
-    
+
+
 sensor:
   - platform: homeassistant
     name: "Temperature Serre"
@@ -302,6 +303,11 @@ sensor:
     entity_id: sensor.nantes_temperature
     id: temperature
       
+  - platform: wifi_signal
+    name: "Signal WiFi ReTerminal"
+    id: wifi_signal_strength
+    update_interval: never   
+
   # Previsions quotidiennes      
   - platform: homeassistant
     name: "TemperatureJ0"
@@ -311,8 +317,10 @@ sensor:
     accuracy_decimals: 1
     on_value:
       then:
-        # Refresh the e-paper display whenever this sensor updates
+        # Refresh the wifi signal measure and e-paper display whenever this sensor updates (wifi connected)
+        - component.update: wifi_signal_strength      
         - component.update: epaper_display      
+
   - platform: homeassistant
     name: "TemperatureJ1"
     entity_id: sensor.meteo_jour_nantes
@@ -651,11 +659,18 @@ font:
       - "\U000F058C" # water
       - "\U000F050F" # thermometer
       - "\U000F1442" # clock
-      
+      - "\U000F0928" # wifi-strength-4
+      - "\U000F0925" # wifi-strength-3
+      - "\U000F0922" # wifi-strength-2
+      - "\U000F091F" # wifi-strength-1
+      - "\U000F092B" # wifi-strength-alert-outline
+      - "\U000F092E" # wifi-strength-off-outline
+
+
 # Deep sleep configuration to save power
 deep_sleep:
   id: deep_sleep_1              # ID for deep sleep component
-  run_duration: 300s             # Time to stay awake after wake-up (30 secondes)
+  run_duration: 30s             # Time to stay awake after wake-up (30 secondes)
   sleep_duration: 30min         # Time to sleep between wake-ups (30 minutes)
   wakeup_pin: GPIO3             # GPIO pin to wake up device
   wakeup_pin_mode: INVERT_WAKEUP # Inverted wake-up logic
@@ -977,15 +992,29 @@ display:
 
       // BATTERIE
       if (id(battery_voltage).state >= 3.8) {
-        it.printf(730, 450, id(icon_font_20), "\U000F12A3"); // battery full
+        it.printf(730, 455, id(icon_font_20), "\U000F12A3"); // battery full
       } else if (id(battery_voltage).state >= 3.6) {
-        it.printf(730, 450, id(icon_font_20), "\U000F12A2"); // battery medium
+        it.printf(730, 455, id(icon_font_20), "\U000F12A2"); // battery medium
       } else {
-        it.printf(730, 450, id(icon_font_20), "\U000F12A1"); // battery low
+        it.printf(730, 455, id(icon_font_20), "\U000F12A1"); // battery low
       }
-      it.printf(750, 452, id(myFont14), "%.1fV", id(battery_voltage).state);
+      it.printf(750, 457, id(myFont14),  "%.1fV",id(battery_voltage).state);      
 
+      // WIFI SIGNAL
+      if (id(wifi_signal_strength).state >= -50) {
+        it.printf(650, 455, id(icon_font_20), "\U000F0928"); // wifi 4
+      } else if (id(wifi_signal_strength).state >= -60) {
+        it.printf(650, 455, id(icon_font_20), "\U000F0925"); // wifi 3
+      } else if (id(wifi_signal_strength).state >= -70) {
+        it.printf(650, 455, id(icon_font_20), "\U000F0922"); // wifi 2
+      } else if (id(wifi_signal_strength).state >= -80) {
+        it.printf(650, 455, id(icon_font_20), "\U000F091F"); // wifi 1
+      } else if (id(wifi_signal_strength).state >= -90) {
+        it.printf(650, 455, id(icon_font_20), "\U000F092B"); // wifi-strength-alert-outline
+      } else
+      {
+        it.printf(650, 455, id(icon_font_20), "\U000F092E"); // no wifi
+      }
+      it.printf(670, 457, id(myFont14), "%.0fdBm", id(wifi_signal_strength).state);      
       
-
-
 
